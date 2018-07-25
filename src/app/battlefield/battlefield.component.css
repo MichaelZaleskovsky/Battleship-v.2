@@ -1,0 +1,110 @@
+
+div.container {
+  width: 50vw;
+  height: auto;
+  margin-top: 60px;
+}
+
+div.main {
+  margin: auto;
+border: 3px solid #5899b9;
+  width: 70vh;
+  box-sizing: content-box;
+}
+
+div.child1 {
+  width: 70vh;
+  height: 7vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #76d4ff;
+
+}
+
+div.child2 {
+  width: 7vh;
+  height: 7vh;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  font-size: 10px;
+  justify-content: center;
+  position: relative;
+}
+
+
+
+
+div.empty{
+  background-color: transparent;
+  border: none;
+}
+
+div.bt{
+  border-top: 2px solid #78b40c;
+  background-color: #2ba946;
+}
+div.bb{
+  border-bottom: 2px solid #216d05;
+  background-color: #2ba946;
+
+}
+div.bl{
+  border-left: 2px solid #216d05;
+  background-color: #2ba946;
+}
+div.br {
+  border-right:2px solid #78b40c;
+  background-color: #2ba946;
+}
+
+
+div.shot:before{
+  -webkit-animation-name: shoot; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: shoot;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  content: '.';
+  display: block;
+  width: 5vh;
+  height: 5vh;
+  position: absolute;
+  border-radius: 50%;
+  color:transparent;
+  top:2.5vh;
+  -webkit-box-shadow: -2px 4px 56px -2px rgba(230,71,23,1);
+  -moz-box-shadow: -2px 4px 56px -2px rgba(230,71,23,1);
+  box-shadow: -2px 4px 56px -2px rgb(230, 130, 0);
+}
+
+@-webkit-keyframes shoot {
+  0%   {opacity: 1; width: 1vh; height:1vh }
+  25% {opacity: 1; width: 5vh; height:5vh }
+  100% {opacity: 1; width: 7vh; height:7vh }
+}
+
+/* Standard syntax */
+@keyframes shoot {
+  0%   {opacity: 0; width: 0vh; height:0vh;top:50%;left:50%;  background-color: #ff9a09;
+  }
+
+  25% {opacity: 1; width: 7vh; height:7vh; top:0%;left:0%; background: rgba(248,80,50,1);
+    background: radial-gradient(ellipse at center, rgb(248, 132, 31) 0%, rgba(248,80,50,1) 17%, rgba(241,111,92,1) 50%, rgb(255, 138, 44) 77%, rgba(240,47,23,1) 93%, rgba(231,56,39,1) 100%);
+  }
+  100% {opacity: 0; width: 0vh; height:0vh; top:50%;left:50%; background-color: #ffbe18
+  }
+}
+
+
+div.sunk {
+  background-color: #2cbeff;
+  border-top-color: #82ddff;
+  border-bottom-color: #07afff;
+  border-left-color: #07afff;
+  border-right-color: #82ddff;
+}
+
+
