@@ -1,13 +1,9 @@
-
-<!--<button (click)="generate()">GENERATE</button>
-<button (click)="clearMap()">CLEAR</button>-->
 <div class="container mt-0 ">
   <div class="main">
     <div class="child1" *ngFor="let row of battle.map; let y = index">
       <div class="child2" *ngFor="let cell of row; let x = index"
-           [ngClass]="setBorder(cell,y, x)">
+           [ngClass]="setBorder(cell, y, x)">
       </div>
     </div>
-
   </div>
 </div>
