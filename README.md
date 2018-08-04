@@ -12,4 +12,4 @@ Mikhail Zaleskovsky, mz.java.developer@gmail.com, +972-54-552-1949
 
 ## START PROJECT WITHOUT DOWNLOADING
 
-https://stackblitz.com/github/MichaelZaleskovsky/battleship
+https://stackblitz.com/github/MichaelZaleskovsky/battleship2
