@@ -2,7 +2,7 @@
   <div class="main">
     <div class="child1" *ngFor="let row of battle.map; let y = index">
       <div class="child2" *ngFor="let cell of row; let x = index"
-           [ngClass]="setBorder(cell, y, x)">
+           [ngClass]="setBorder(cell, y, x)" (click)="clickShot(x, y)">
       </div>
     </div>
   </div>

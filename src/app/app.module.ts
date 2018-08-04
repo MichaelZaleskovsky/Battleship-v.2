@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BattlefieldComponent } from './battlefield/battlefield.component';
-import {BattleService} from './battle.service';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -15,7 +14,7 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     FormsModule
   ],
-  providers: [BattleService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

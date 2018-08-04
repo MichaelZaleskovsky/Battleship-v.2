@@ -1,40 +1,53 @@
-
-<div contenteditable="true" (keyup)="toShoot($event)" class="overlap " id="start">
-</div>
-
 <div class="container-fluid">
   <div class="jumbotron pt-4 mb-2 pb-0 text-center" style="height: 7rem">
-    <div class="form-group label " contenteditable="false" *ngIf="gameRun">
-      <p>Press any key or push
-        <button class="btn btn-danger ml-1 mr-1" (click)="toShoot($event)">SHOOT</button>
-        button for random shoot
-      </p>
-
-      <div class="form-check-inline">
-        <label for="check" class="form-check-label">
-          <input type="checkbox" id="check" class="form-check-input" [(ngModel)]="takeAim"
-                 (click)="takeAim ? toFocus() : ''">
-          or check for take aim
-        </label>
-        <div *ngIf="takeAim" class="ml-4">
-          X: <input type="number" [(ngModel)]="x">
-          Y: <input type="number" [(ngModel)]="y">
-        </div>
+    <div class="header">
+      <div class="head1" *ngIf="move == 'your'">
+        YOUR MOVE
+      </div>
+      <div class="head2" *ngIf="move == 'my'">
+        MY MOVE
       </div>
     </div>
-    <div class="gameover text-center mt-2 " *ngIf="!gameRun" contenteditable="false">
 
-      <p><span class="text-danger" style="font-weight: bold">GAME OVER!</span> Try again?
-      </p>
-      <button type="button" class="btn btn-danger" (click)="ngOnInit()">
-        START
-      </button>
-    </div>
   </div>
 
+  <div class="row">
+  <div class = "col border-right"  >
+   <app-battlefield [my]="false"
+                     (shooter)="toShoot($event)"
+                     (mover)="move = $event"
+                     (winer)="gameOver($event)">
+    </app-battlefield>
+  </div>
+  <div class = "col ">
+    <app-battlefield [my]="true"
+                     [shoot]="shoot"
+                     (mover)="move = $event"
+                     (winer)="gameOver($event)">
+    </app-battlefield>
+  </div>
 
-  <app-battlefield></app-battlefield>
+</div>
+<div class="modalWin">
+    <div class="gameover text-center mt-2" *ngIf="!gameRun">
+  <p class="pt-4">
+    <span class="text-danger" style="font-weight: bold">GAME OVER!</span><br>
+    <span *ngIf="myWin">
+          I WIN!
+        </span><br>
+    <span class = "text-danger text-uppercase" style = "font-weight: bold" *ngIf="!myWin">
+          YOU WIN!
+        </span><br>
+    Try again?
+  </p>
+  <a class="btn btn-success"href=''>START</a>
+</div>
+</div>
 
 
 </div>
+
+
+
+
 

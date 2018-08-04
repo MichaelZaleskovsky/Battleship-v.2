@@ -1,9 +1,5 @@
-import { Injectable } from '@angular/core';
-import {IShip, DotShip, LShip, Point, Ship} from './model/ship.model';
+import {IShip, DotShip, LShip, Point, Ship} from './ship.model';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class BattleService {
   map: number[][];
   fleet: Ship[];
@@ -17,16 +13,12 @@ export class BattleService {
     this.clearMap();
   }
 
- /* Method to serve shoot and check is shot hit the ship
- * parameters: x, y - coordinates of shoot, should be from 0 to 9
- * return: false if all ships are sunk and true otherwise
-*/
-  toShoot(point: Point): boolean {
+  /* Method to serve shoot and check is shot hit the ship
+  * parameters: x, y - coordinates of shoot, should be from 0 to 9
+  * return: false if all ships are sunk and true otherwise
+ */
+  toShoot(point: Point): Point[] {
     const shipNum = this.checkShip(point.x, point.y);
-    if (shipNum >= 0) {
-      this.shipSink(shipNum);
-      if (this.shipAlive === 0) {return false; }
-    }
     this.shoot.x = point.x;
     this.shoot.y = point.y;
     setTimeout(() => {
@@ -34,12 +26,16 @@ export class BattleService {
       this.shoot.y = -1;
 
     }, 1500);
-    return true;
+    if (shipNum >= 0) {
+      this.shipSink(shipNum);
+      return this.fleet[shipNum].margin;
+    }
+    return [point];
   }
 
- /* Method to generate battle field, fleet and random place ships on field
- *  no parameters, no return
-*/
+  /* Method to generate battle field, fleet and random place ships on field
+  *  no parameters, no return
+ */
   generate() {
     while (true) {
       this.shipAlive = 0;
@@ -49,6 +45,9 @@ export class BattleService {
         continue;
       }
       if (!this.generateShip(new LShip())) {
+        continue;
+      }
+      if (!this.generateShip(new DotShip())) {
         continue;
       }
       if (!this.generateShip(new DotShip())) {
